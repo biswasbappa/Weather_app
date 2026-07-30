@@ -31,8 +31,9 @@ const Weather = () => {
   };
 
   const search = async (city:string) => {
-    if (city === "") {
-      alert("Enter City Name");
+    if (city.trim() === "") {
+        alert("Enter City Name");
+        return;
     }
     try {
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${import.meta.env.VITE_APP_ID}`;
@@ -45,7 +46,7 @@ const Weather = () => {
         return;
       }
       console.log(data);
-      const iconCode = data.weather[0].icon;
+      const iconCode = data.weather[0].icon as keyof typeof allicons;
       const icon = allicons[iconCode] || clear_icon;
       setWeatherData({
         humidity: data.main.humidity,
