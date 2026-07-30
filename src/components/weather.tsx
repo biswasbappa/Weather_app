@@ -30,7 +30,7 @@ const Weather = () => {
     "13n": snow_icon,
   };
 
-  const search = async (city) => {
+  const search = async (city:string) => {
     if (city === "") {
       alert("Enter City Name");
     }
